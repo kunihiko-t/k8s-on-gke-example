@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    service: app
+  name: app
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: app
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - make run
+        env:
+          - name: GO_ENV
+            value: example
+        image: asia.gcr.io/k8s-practice-180706/app
+        name: app
+        ports:
+        - containerPort: 9090
+        resources: {}
+        workingDir: /go/src/github.com/kunihiko-t/k8s-example/app
+      restartPolicy: Always
+
+status: {}
