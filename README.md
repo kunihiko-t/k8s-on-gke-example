@@ -21,6 +21,8 @@ gcloud docker -- push asia.gcr.io/<GCP-PROJECT-ID>/app
 
 ## Create PV, PVC, Deployment, Ingress, Services..
 
+Create a disk named disk-1 on Compute Engine -> Disk and...
+
 ```
 
 kubectl apply -f <each yml file>
